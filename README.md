@@ -19,7 +19,7 @@ Go in depth with leaflet. Learn about one of the foundations of data, Maps! Geo 
 ## Technologies
 * Leaflet
 * Javascript
-* css
+* CSScs
 * HTML
 * USGS API
 
