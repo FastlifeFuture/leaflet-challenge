@@ -14,7 +14,7 @@ Use EarthQuake data to plot points on a  Map.
 ## General info
 Go in depth with leaflet. Learn about one of the foundations of data, Maps! Geo Mapping dives into plotting coordinates, changing markers and creating pop-ups. Leaflet uses Javascript to effeciantly and smoothly map objects. Creates an easy to read, intuitive way to display information.
 
-![[](Images/popUp.png)
+![](Images/popUp.png)
 
 ## Technologies
 * Leaflet
