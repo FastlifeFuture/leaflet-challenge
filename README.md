@@ -43,6 +43,6 @@ Using D3 call to Geo Json
 ![](Images/d3call.png)
 
 GeoMapping plot the markers
-![](mapping)
+![](Images/mapping.png)
 
 
