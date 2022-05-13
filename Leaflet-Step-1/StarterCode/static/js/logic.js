@@ -7,14 +7,14 @@ d3.json(queryUrl).then(function(data){
   createFeatures(data.features);
 })
 function markerSize(mag) {
-  console.log(mag)
+  // console.log(mag)
   if (mag === 0){return 1;} 
   return mag * 5;
   
 }
-function getColor(depth) {
-  if ( depth < -10 ) {
-    return "#42f551";
+function getColor(depth) { 
+  if ( depth < -10 ) { 
+    return  "#42f551";
   } else if (depth <= 10) {
     return "#d1f542";
   } else if (depth <= 30){
@@ -60,6 +60,7 @@ function createFeatures (earthquakeData){
 
 }
 
+
 function createMap(earthquakes){
 // create the base layers.
   var street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -89,6 +90,30 @@ function createMap(earthquakes){
     layers: [street, earthquakes]
   });
 
+  // // Setting up legend the legend
+  var legend = L.control({position: 'bottomright'});
+  legend.onAdd = function (map) {
+
+  var div = L.DomUtil.create('div', 'info legend');
+  labels = ['<strong>Depth of Epicenter</strong>'],
+  categories = ['<10','10-30','30-50','50-70','70-90', '90 +'];
+  var colors = ["#42f551", "#d1f542", "#f5d742", "#f5b642", "#f5b642", "#f51b14"];
+  for (var i = 0; i < categories.length; i++) {
+
+      div.innerHTML += 
+      labels.push(
+          // '<i class="circle" style="background:' + getColor(categories[i]) + '"></i> ' +
+      //(categories[i] ? categories[i] : '+'));
+           '<i class="circle" style="background:' + colors[i] + '"></i> ' +
+          (categories[i] ? categories[i] : '+'));
+  }
+  div.innerHTML = labels.join('<br>');
+  return div;
+  legend.addTo(myMap);
+
+};
+
+legend.addTo(myMap);
   // Create a layer control.
   // Pass it our baseMaps and overlayMaps.
   // Add the layer control to the map.
@@ -97,8 +122,25 @@ function createMap(earthquakes){
   }).addTo(myMap);
 }
 
-// Setting up legend the legend
-var legend = L.control({position: 'bottomright'});
-legend.onAdd = function(map){
-    var div = L.DomUtil.create('div', 'info legend') 
-}
+// // Setting up legend the legend
+
+
+// var legend = L.control({position: 'bottomleft'});
+// legend.onAdd = function (map) {
+
+// var div = L.DomUtil.create('div', 'info legend');
+// labels = ['<strong>Depth of Epicenter</strong>'],
+// categories = ['<10','10-30','30-50','50-70','70-90', '90 +'];
+
+// for (var i = 0; i < categories.length; i++) {
+
+//         div.innerHTML += 
+//         labels.push(
+//             '<i class="circle" style="background:' + getColor(categories[i]) + '"></i> ' +
+//         (categories[i] ? categories[i] : '+'));
+
+//     }
+//     div.innerHTML = labels.join('<br>');
+// return div;
+// };
+
